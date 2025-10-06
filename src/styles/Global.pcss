@@ -1,0 +1,52 @@
+@import url('https://fonts.cdnfonts.com/css/br-segma');
+
+/* CSS reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #d3d6e7;
+  --grid-x: #9697a522;
+  --grid-y: #0b0e5022;
+  --title: #1e2a49;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  position: relative;
+  background-color: var(--bg);
+  /* Grid background */
+  background-image:
+    repeating-linear-gradient(to right, transparent 0 110px, var(--grid-x) 110px 111px),
+    repeating-linear-gradient(to bottom, transparent 0 110px, var(--grid-y) 110px 111px);
+  background-position: 0 0, 0 0;
+  animation: gridShift 10s linear infinite;
+
+  /* respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* Grid shift animation */
+@keyframes gridShift {
+  from { background-position: 0 0, 0 0; }
+  to   { background-position: 111px 0, 0 111px; }
+}
+
+/* Background image */
+body::before {
+  content: '';
+  position: absolute;
+  inset: 10% auto 0;
+  width: min(1640px, 90vw);
+  height: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url(/assets/bg-01.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top center;
+  opacity: .6;
+  pointer-events: none;
+}
