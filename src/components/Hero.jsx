@@ -4,7 +4,7 @@
 
 // Array of gundam cards images
 const images = Array.from({ length: 10 }, (_, i) => ({
-    src: `/assets/gundam_${String(i + 1).padStart(2, '0')}.jpg`,
+    src: `/assets/gundam_${String(i + 1).padStart(2, '0')}.webp`,
     alt: `Gundam Card ${String(i + 1).padStart(2, '0')}`
 }))
 
@@ -22,7 +22,7 @@ export default function Hero() {
                         className="item"
                         style={{ '--cardPos': idx + 1 }}
                     >
-                        <img className="image" src={img.src} alt={img.alt} />
+                        <img className="image" src={img.src} alt={img.alt} loading="lazy" />
                     </div>
                 ))}
             </div>
